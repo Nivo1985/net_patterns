@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using SingletonPattern.Implementations;
 
@@ -9,7 +10,36 @@ namespace SingletonPattern
     {
         static void Main(string[] args)
         {
-            Casses.UltimateSingletonParallelUsage();
+            
+            // // 1
+            //Casses.NaiveSingletonUsaga();
+            
+            // // 2
+            // Casses.NaiveSingletParallelProblem();
+            
+            // // 3
+            // Casses.ThreadSafeSingletParallelUsage();
+
+            // // 3
+            // var watch1 = new Stopwatch();
+            // var watch2 = new Stopwatch();
+            //
+            // watch1.Start();
+            // for (int i = 0; i < 1000; i++)
+            // {
+            //     Casses.ThreadSafeSingletParallelUsage();    
+            // }
+            // watch1.Stop();
+            //
+            // watch2.Start();
+            // for (int i = 0; i < 1000; i++)
+            // {
+            //     Casses.UltimateSingletonParallelUsage();    
+            // }
+            // watch2.Stop();
+            //
+            // Console.WriteLine($"ThreadSafeSingletParallelUsage x 1 000 took: {watch1.ElapsedMilliseconds}");
+            // Console.WriteLine($"UltimateSingletonParallelUsage x 1 000 took: {watch2.ElapsedMilliseconds}");
         }
     }
 
