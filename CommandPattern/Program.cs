@@ -41,7 +41,9 @@ namespace CommandPattern
             manager.Invoke(changeQuantityCommand2);
             manager.Invoke(changeQuantityCommand2);
             manager.Invoke(changeQuantityCommand2);
-
+            Utils.PrintProducts(shopClientRepo.GetAll());
+            
+            manager.Undo();
             Utils.PrintProducts(shopClientRepo.GetAll());
         }
 

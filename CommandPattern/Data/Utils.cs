@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using CommandPattern.Data.Entities;
 using CommandPattern.Data.Repos;
 
@@ -10,7 +11,13 @@ namespace CommandPattern.Data
     {
         public static void PrintProducts(IEnumerable<(Product product, int quantity)> productsInCard)
         {
-            foreach (var productInCard in productsInCard)
+            var productInCards = productsInCard.ToList();
+            if (!productInCards.Any())
+            {
+                Console.WriteLine("Card is empty");
+            }
+            
+            foreach (var productInCard in productInCards)
             {
                 Console.WriteLine($"{productInCard.product.Name} : {productInCard.quantity.ToString()}");
             }
