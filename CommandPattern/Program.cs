@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using CommandPattern.Commands;
+﻿using CommandPattern.Commands;
 using CommandPattern.Data;
 using CommandPattern.Data.Repos;
 using CommandPattern.Enums;
@@ -10,7 +7,7 @@ namespace CommandPattern
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             //BasicApproach();
             CommandAproach();
@@ -47,7 +44,7 @@ namespace CommandPattern
             Utils.PrintProducts(shopClientRepo.GetAll());
         }
 
-        static void BasicApproach()
+        private static void BasicApproach()
         {
             var productRepo = new ProductRepo();
             var shopClientRepo = new ShopClientRepo();
