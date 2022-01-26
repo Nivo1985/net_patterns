@@ -10,10 +10,10 @@ namespace CommandPattern
         static void Main()
         {
             //BasicApproach();
-            CommandAproach();
+            CommandApproach();
         }
 
-        static void CommandAproach()
+        static void CommandApproach()
         {
             var productRepo = new ProductRepo();
             var shopClientRepo = new ShopClientRepo();
@@ -45,7 +45,7 @@ namespace CommandPattern
         }
 
         private static void BasicApproach()
-        {
+        { 
             var productRepo = new ProductRepo();
             var shopClientRepo = new ShopClientRepo();
 
