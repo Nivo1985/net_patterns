@@ -11,6 +11,11 @@ void NewWay()
     var lic2 = new LifeLongLicenseNew("Soft 2", DateTime.Now, new NoDiscount());
     var lic3 = new MonthlyLicenseNew("Soft 3", DateTime.Now, new SmallDiscount());
     var lic4 = new LifeLongLicenseNew("Soft 4", DateTime.Now, new BigDiscount());
+
+    PrintLicenseNew(lic1);
+    PrintLicenseNew(lic2);
+    PrintLicenseNew(lic3);
+    PrintLicenseNew(lic4);
 }
 
 void OldWay()
@@ -23,8 +28,6 @@ void OldWay()
     PrintLicenseOld(lic2);
     PrintLicenseOld(lic3);
     PrintLicenseOld(lic4);
-    
-    Console.WriteLine("_____________________________");
 }
 
 void PrintLicenseOld(LicenseOld license)
@@ -32,6 +35,7 @@ void PrintLicenseOld(LicenseOld license)
     Console.WriteLine($"Name: {license.ProductName}");
     Console.WriteLine($"Price: {Utils.GetPrice(license)}");
     Console.WriteLine($"Valid for: {Utils.GetValidFor(license)}");
+    Console.WriteLine("_____________________________");
 }
 
 void PrintLicenseNew(LicenseNew license)
@@ -39,4 +43,5 @@ void PrintLicenseNew(LicenseNew license)
     Console.WriteLine($"Name: {license.ProductName}");
     Console.WriteLine($"Price: {Utils.GetPrice(license)}");
     Console.WriteLine($"Valid for: {Utils.GetValidFor(license)}");
+    Console.WriteLine("_____________________________");
 }
