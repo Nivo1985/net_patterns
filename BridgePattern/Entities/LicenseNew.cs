@@ -3,11 +3,11 @@
 public abstract class LicenseNew
 {
     public string ProductName { get; }
-    public DateTime PurchaseDate { get; }
+    protected DateTime PurchaseDate { get; }
 
     private readonly Discount _discount;
-    
-    public LicenseNew( string name, DateTime date, Discount discount)
+
+    protected LicenseNew( string name, DateTime date, Discount discount)
     {
         ProductName = name;
         PurchaseDate = date;

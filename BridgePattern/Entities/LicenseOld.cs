@@ -3,9 +3,9 @@
 public abstract class LicenseOld
 {
     public string ProductName { get; }
-    public DateTime PurchaseDate { get; }
+    protected DateTime PurchaseDate { get; }
 
-    public LicenseOld( string name, DateTime date)
+    protected LicenseOld(string name, DateTime date)
     {
         ProductName = name;
         PurchaseDate = date;
