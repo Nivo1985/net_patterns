@@ -7,51 +7,51 @@ public class OrderOld
     public OrderOld()
     {
         Id = new Random().Next();
-        isNew = true;
+        IsNew = true;
         ShowOrder("New");
     }
 
-    public int Id { get; set; }
-    public string Name { get; set; }
-    public int Number { get; set; }
+    private int Id { get; set; }
+    private string Name { get; set; }
+    private int Number { get; set; }
     
-    private CancellationTokenSource cancelToken;
-    private bool isNew { get; set; }
-    private bool isProcessed { get; set; }
-    private bool isCompleted { get; set; }
+    private CancellationTokenSource _cancelToken;
+    private bool IsNew { get; set; }
+    private bool IsProcessed { get; set; }
+    private bool IsCompleted { get; set; }
 
     public void SubmitOrder(string name, int number, OrderResult wantedResult)
     {
-        if (isNew)
+        if (IsNew)
         {
-            isNew = false;
-            isProcessed = true;
+            IsNew = false;
+            IsProcessed = true;
 
             Name = name;
             Number = number;
 
-            cancelToken = new CancellationTokenSource();
+            _cancelToken = new();
             
-            ProcessFunctions.ProcessBookingOld(this, OrderComplete, cancelToken, wantedResult);
+            ProcessFunctions.ProcessBookingOld(this, OrderComplete, _cancelToken, wantedResult);
             ShowOrder("Processed");
         }
     }
     
     public void Cancel()
     {
-        if (isNew)
+        if (IsNew)
         {
             ShowOrder("Canceled by User");
-            isNew = false;
+            IsNew = false;
         }
-        else if (isProcessed)
+        else if (IsProcessed)
         {
-            cancelToken.Cancel();
+            _cancelToken.Cancel();
         }
-        else if (isCompleted)
+        else if (IsCompleted)
         {
             ShowOrder("Canceled - expect a refund");
-            isCompleted = false;
+            IsCompleted = false;
         }
         else
         {
@@ -62,32 +62,32 @@ public class OrderOld
 
     public void DatePassed()
     {
-        if (isNew)
+        if (IsNew)
         {
             ShowOrder("Order Expired");
-            isNew = false;
+            IsNew = false;
         }
-        else if (isCompleted)
+        else if (IsCompleted)
         {
             ShowOrder("Completed - hope you are happy");
-            isCompleted = false;
+            IsCompleted = false;
         }
     }
 
 
     private void OrderComplete(OrderOld order, OrderResult result)
     {
-        isProcessed = false;
+        IsProcessed = false;
         switch (result)
         {
             case OrderResult.Success:
-                isCompleted = true;
+                IsCompleted = true;
                 ShowOrder("Complete");
                 break;
             case OrderResult.Fail:
                 Name = string.Empty;
                 Id = new Random().Next();
-                isNew = true;
+                IsNew = true;
                 ShowOrder("New");
                 break;
             case OrderResult.Cancel:

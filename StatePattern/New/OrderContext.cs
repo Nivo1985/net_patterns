@@ -10,22 +10,19 @@ public class OrderContext
 
     private OrderState _orderState;
 
+    public OrderContext()
+    {
+        MoveToOrderState(new OrderNew());
+    }
     public void MoveToOrderState(OrderState orderState)
     {
         _orderState = orderState;
         _orderState.EnterState(this);
     }
-
-    public OrderContext()
-    {
-        MoveToOrderState(new OrderNew());
-    }
-
     public void SubmitOrder(string name, int number, OrderResult wantedResult)
     {
         _orderState.SubmitOrder(this,name,number,OrderResult.Success);
     }
-
     public void Cancel()
     {
         _orderState.Cancel(this);
