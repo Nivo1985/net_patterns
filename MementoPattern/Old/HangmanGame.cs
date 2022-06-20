@@ -8,16 +8,16 @@ public class HangmanGame
 {
     private readonly string _secretWord;
     private const char _maskChar = '_';
-    protected const int INITIAL_GUESSES = 5;
+    private const int INITIAL_GUESSES = 5;
 
     public HangmanGame(string secretWord = "secret")
     {
         _secretWord = secretWord.ToUpperInvariant();
     }
 
-    public bool IsOver => this.Result > GameResult.InProgress;
-    public string CurrentMaskedWord => new string(_secretWord.Select(c => PreviousGuesses.Contains(c) ? c : _maskChar).ToArray());
-    public List<char> PreviousGuesses { get; } = new List<char>();
+    public bool IsOver => Result > GameResult.InProgress;
+    public string CurrentMaskedWord => new(_secretWord.Select(c => PreviousGuesses.Contains(c) ? c : _maskChar).ToArray());
+    public List<char> PreviousGuesses { get; } = new();
     public int GuessesRemaining => INITIAL_GUESSES - PreviousGuesses.Count(c => !CurrentMaskedWord.Contains(c));
     public GameResult Result { get; private set; }
 
