@@ -6,7 +6,8 @@ using MementoPattern.Utils.Enums;
 using MementoPattern.Utils.Exceptions;
 
 Console.WriteLine("Hello, Hangman");
-NewWay();
+OldWay();
+//NewWay();
 
 void OldWay()
 {
@@ -98,12 +99,10 @@ void NewWay()
         catch (DuplicateGuessException)
         {
             OutputError("You already guessed that.");
-            continue;
         }
         catch (InvalidGuessException)
         {
             OutputError("Sorry, invalid guess.");
-            continue;
         }
     }
 
